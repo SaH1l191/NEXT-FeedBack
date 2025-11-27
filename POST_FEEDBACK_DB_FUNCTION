@@ -1,28 +1,15 @@
-POST_FEEDBACK_DB_FUNCTION
-
-create or replace function add_feedback(
-  p_project_id integer,      -- ID of the project the feedback is related to
-  p_user_name text,          -- Name of the user submitting the feedback
-  p_user_email text,         -- Email of the user submitting the feedback
-  p_message text             -- The feedback message
-)
-returns bigint               -- The function will return the ID of the new feedback
-language plpgsql
-as $$
 declare
   new_feedback_id bigint;    -- Declare a variable to store the new feedback's ID
 begin
-  -- Insert the feedback into the 'feedbacks' table
-  -- Do NOT include 'id' since it's auto-incremented
-  insert into feedbacks (project_id, user_name, user_email, message)
-  values (p_project_id, p_user_name, p_user_email, p_message)
+  
+  insert into feedbacks (project_id, user_name, user_email, message,p_rating)
+  values (p_project_id, p_user_name, p_user_email, p_message,p_rating)
   returning id into new_feedback_id;  -- Capture the ID of the newly inserted feedback
 
   -- Return the ID of the new feedback
   return new_feedback_id;
 end;
-$$;
  
 
 USECASE : 
-SELECT add_feedback(7, 'John filama', 'johnfialama@example.com', 'Great project, but could use some improvements!');
+SELECT add_feedback(7, 'John filama', 'johnfialama@example.com', 'Great project, but could use some improvements!',4);

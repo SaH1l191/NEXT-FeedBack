@@ -18,13 +18,16 @@ import {
 } from '@tanstack/react-table'
 
 import { InferSelectModel } from "drizzle-orm";
-import { feedbacks, projects } from "@/db/schema";
+import { feedbacks } from "@/db/schema";
 
 type Feedback = InferSelectModel<typeof feedbacks>;
 
 function Table(props: { data: Feedback[] }) {
-  const rerender = React.useReducer(() => ({}), {})[1]
+  
 
+  //copied from 
+  //https://tanstack.com/table/latest/docs/framework/react/examples/pagination?panel=sandbox as it is 
+  const rerender = React.useReducer(() => ({}), {})[1]
   const columns = React.useMemo<ColumnDef<Feedback>[]>(
     () => [
       {
@@ -58,9 +61,7 @@ function Table(props: { data: Feedback[] }) {
     ],
     []
   )
-
-
-
+ 
   return (
     <>
       <MyTable
@@ -74,6 +75,7 @@ function Table(props: { data: Feedback[] }) {
   )
 }
 
+//same for this 
 function MyTable({
   data,
   columns,

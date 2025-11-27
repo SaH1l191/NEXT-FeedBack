@@ -1,0 +1,1 @@
+ALTER TABLE "subscriptions" RENAME COLUMN "projectId" TO "project_id";

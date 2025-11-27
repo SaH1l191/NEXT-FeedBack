@@ -3,7 +3,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -44,7 +43,8 @@ const NewProjBtn = () => {
             <Label htmlFor="description">Description</Label>
             <Textarea name="description" id="description" placeholder="Description (optional)" />
           </div>
-          <SubmitButton />        </form>
+          <SubmitButton />
+        </form>
       </DialogContent>
     </Dialog>
   )

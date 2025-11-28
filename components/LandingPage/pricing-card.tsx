@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 const PricingCard = ({ title, price, description, features, isPopular, url }: PricingPlan) => {
   const router = useRouter();
 
-  const onClick = () => router.push(url);
+  const onClick = () =>{return router.push(url);}
 
   return (
     <div className="border flex flex-col justify-between bg-white/20 rounded-lg h-full p-6 hover:shadow-md text-left relative">

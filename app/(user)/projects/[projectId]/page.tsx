@@ -16,7 +16,7 @@ const page = async ({ params }: { params: { projectId: string } }) => {
         where: (eq(dbProjects.id, parseInt(params.projectId))),
         with: { feedbacks: true }
     });
-    console.log("projects", projects) 
+    console.log("projects", projects)
     const project = projects[0];
 
     return (
@@ -30,7 +30,9 @@ const page = async ({ params }: { params: { projectId: string } }) => {
                     <h2 className="text-primary-background text-xl mb-2">{project.description}</h2>
                 </div>
                 <div className="flex flex-col">
-                    {project.url ? <Link href={project.url} className="underline text-indigo-700 flex items-center"><Globe className="h-5 w-5 mr-1" /><span className="text-lg">Visit site</span></Link> : null}
+                    {project.url ?
+                        <Link href={project.url} className="underline text-indigo-700 flex items-center">
+                            <Globe className="h-5 w-5 mr-1" /><span className="text-lg">Visit site</span></Link> : null}
                     <Link href={`/projects/${params.projectId}/instructions`} className="underline text-indigo-700 flex items-center mt-2">
                         <Code className="h-5 w-5 mr-1" /><span className="text-lg">Embed Code</span></Link>
                 </div>

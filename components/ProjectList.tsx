@@ -1,15 +1,17 @@
 import { InferSelectModel } from "drizzle-orm";
 import { projects } from "@/db/schema";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link"; 
 import { Lock } from "lucide-react"; 
+import SubscribeBtn from "@/app/(user)/payments/subscribe-btn";
+import { monthlyPlanId } from "@/lib/payments";
 
 type Project = InferSelectModel<typeof projects>;
 
 type Props = {
   projects: Project[];
-//   subscribed: boolean | null | undefined;
+  subscribed: boolean | null | undefined;
 };
 
 const ProjectList = (props: Props) => {
@@ -40,7 +42,7 @@ const ProjectList = (props: Props) => {
               <CardDescription className="mt-3">Unlock unlimited projects</CardDescription>
             </CardHeader>
             <div className="w-fit mx-auto mb-4">
-              {/* <SubscribeBtn price={monthlyPlanId} /> */}
+              <SubscribeBtn price={monthlyPlanId} />
             </div>
           </Card>
           
